@@ -2,6 +2,7 @@
 Créer une interface d'affichage météo
 
 Énoncé du brief
+
 Scénario
 Vous êtes développeur web pour le compte d’une agence web. Votre agence a signé un contrat pour le développement d’interfaces météo à destination des usagers du réseau de transport en commun de plusieurs villes de taille moyenne en France. Les écrans seront intégrés aux écrans d’information dans les stations et dans les transports.
 Les écrans doivent être programmés avec les technologies web, embarquées dans la webview du système des écrans de la compagnie de transports en commun de la ville.
@@ -19,3 +20,5 @@ Développer l'application
     Déboguer en console afin de valider la procédure
     Intégrer une interface d'affichage de données météo
     Intégrer la mise à jour des données météo toutes les heures
+
+Copyright Orane MERTZ
