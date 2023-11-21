@@ -35,6 +35,22 @@ function getWeatherImage(weather){
       weatherImage = "<img src=\"../landingpage/img/rain.png\" class=\"weather-icon\"/>";
       break;
 
+    case "Thunderstorm":
+    weatherImage = "<img src=\"../landingpage/img/orage.png\" class=\"weather-icon\"/>";
+    break;
+
+    case "Drizzle":
+    weatherImage = "<img src=\"../landingpage/img/bruine.png\" class=\"weather-icon\"/>";
+    break;
+
+    case "Snow":
+    weatherImage = "<img src=\"../landingpage/img/neige.png\" class=\"weather-icon\"/>";
+    break;
+
+    case "Atmosphere":
+    weatherImage = "<img src=\"../landingpage/img/fumee.png\" class=\"weather-icon\"/>";
+    break;
+
     default:
       weatherImage = "<img src=\"../landingpage/img/sun.png\" class=\"weather-icon\"/>";
       break;
