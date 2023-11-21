@@ -28,31 +28,31 @@ function getWeatherImage(weather){
 
   switch (weather) {
     case "Clouds":
-      weatherImage = "<img src=\"../landingpage/img/clouds.png\" class=\"weather-icon\"/>";
+      weatherImage = "<img src=\"../meteo_api/img/clouds.png\" class=\"weather-icon\"/>";
       break;
   
     case "Rain":
-      weatherImage = "<img src=\"../landingpage/img/rain.png\" class=\"weather-icon\"/>";
+      weatherImage = "<img src=\"../meteo_api/img/rain.png\" class=\"weather-icon\"/>";
+      break;
+
+    case "Drizzle":
+      weatherImage = "<img src=\"../meteo_api/img/bruine.png\" class=\"weather-icon\"/>";
       break;
 
     case "Thunderstorm":
-    weatherImage = "<img src=\"../landingpage/img/orage.png\" class=\"weather-icon\"/>";
-    break;
-
-    case "Drizzle":
-    weatherImage = "<img src=\"../landingpage/img/bruine.png\" class=\"weather-icon\"/>";
-    break;
+      weatherImage = "<img src=\"../meteo_api/img/orage.png\" class=\"weather-icon\"/>";
+      break;  
 
     case "Snow":
-    weatherImage = "<img src=\"../landingpage/img/neige.png\" class=\"weather-icon\"/>";
-    break;
-
-    case "Atmosphere":
-    weatherImage = "<img src=\"../landingpage/img/fumee.png\" class=\"weather-icon\"/>";
-    break;
+      weatherImage = "<img src=\"../meteo_api/img/neige.png\" class=\"weather-icon\"/>";
+      break;
+    
+    case "Atsmosphere":
+      weatherImage = "<img src=\"../meteo_api/img/fumee.png\" class=\"weather-icon\"/>";
+      break;
 
     default:
-      weatherImage = "<img src=\"../landingpage/img/sun.png\" class=\"weather-icon\"/>";
+      weatherImage = "<img src=\"../meteo_api/img/sun.png\" class=\"weather-icon\"/>";
       break;
   }
 
