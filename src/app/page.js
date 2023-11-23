@@ -1,60 +1,73 @@
 'use client';
 
-import styles from './page.module.css';
-import myCss from './style.css'
+import './style.css';
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDroplet,
+  faSpinner,
+  faWind
+} from "@fortawesome/free-solid-svg-icons";
+
+import React, { useState, useEffect } from 'react';
+import conf from './conf.json';
+import callApi from './api';
+import { getWeatherImage } from './display';
 
 export default function Home() {
-  const apikey = "2c57ef45ebdf36f05bdc52df8555204c";
+  const [cityWeather, setCityWeather] = useState(undefined);
+  const [imageWeather, setImageWeather] = useState("");  
 
-  var city = "New York";
 
-  const checkWeather = async () => {
-    const baseApiUrl = "https://api.openweathermap.org/data/2.5/weather";
-
-    try {
-      const response = await fetch(baseApiUrl + `?q=${city}&units=metric&lang=fr&appid=${apikey}`);
-      const data = await response.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
+  useEffect(() => {
+    callApi(setCityWeather);
+    const interval = setInterval(() => {
+      callApi(setCityWeather);
+    }, conf.refresh);
   
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if(cityWeather?.weather?.length > 0){
+      setImageWeather(getWeatherImage(cityWeather?.weather[0]?.main));
+    }
+  }, [cityWeather?.weather]);
 
   return (
-    <>
-      <body>
-        <div className="card">
-          <div className="search">
-            {/*<input placeholder="Enter city name" defaultValue={city} spellCheck="false" />*/}
-            <button onClick={checkWeather}>
-              <img src = "/search.png" />
-            </button>
+    <body>
+      <div className="card">
+        {!cityWeather &&
+          <div className="weather">
+            <FontAwesomeIcon icon={faSpinner} spin className="loader" />
           </div>
-            <div className="weather">
-              <img src="/sun.png" className="weather-icon" />
-              <h1 className="temp">22°C</h1>
-              <h2 className="city">New York</h2>
-              <div className ="details">
-                <div className="col">
-                  <img src="/humidity.png" />
-                  <div>
-                    <p className="humidity">50%</p>
-                    <p>Humidity</p>
-                  </div>
+        }
+        {cityWeather &&
+          <div className="weather">
+            <img src={imageWeather} className="weather-icon" />
+            <h1 className="temp">{Math.round(cityWeather?.main?.temp)}°C</h1>
+            <h2 className="city">{cityWeather?.name}</h2>
+            <div className ="details">
+              <div className="col">
+                <FontAwesomeIcon icon={faDroplet} />              
+                <div>
+                  <p className="humidity">{cityWeather?.main?.humidity}%</p>
+                  <p>Humidity</p>
                 </div>
-                <div className="col">
-                  <img src="/wind.png" />
-                  <div>
-                    <p className="wind">50 km/h</p>
-                    <p>Wind Speed</p>
-                  </div>
+              </div>
+              <div className="col">
+                <FontAwesomeIcon icon={faWind} />
+                <div>
+                  <p className="wind">{cityWeather?.wind?.speed} km/h</p>
+                  <p>Wind Speed</p>
                 </div>
               </div>
             </div>
-        </div>
-      </body>
-    </>
+          </div>
+        }
+      </div>
+    </body>
   )
 }
