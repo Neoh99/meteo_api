@@ -54,14 +54,14 @@ export default function Home() {
                 <FontAwesomeIcon icon={faDroplet} />              
                 <div>
                   <p className="humidity">{cityWeather?.main?.humidity}%</p>
-                  <p>Humidity</p>
+                  <p>Humidité</p>
                 </div>
               </div>
               <div className="col">
                 <FontAwesomeIcon icon={faWind} />
                 <div>
                   <p className="wind">{cityWeather?.wind?.speed} km/h</p>
-                  <p>Wind Speed</p>
+                  <p>Vitesse du vent</p>
                 </div>
               </div>
             </div>
